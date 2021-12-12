@@ -9,6 +9,7 @@ export const AtividadeLista = props => {
                     key={a.id}
                     a={a}
                     deletarAtividade={props.deletarAtividade}
+                    pegarAtividade={props.pegarAtividade}
                 />
 
             ))}

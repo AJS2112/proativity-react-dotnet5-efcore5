@@ -44,7 +44,8 @@ export const Atividade = props => {
                 </div>
                 <p className='card-text'>{props.a.descricao}</p>
                 <div className='d-flex justify-content-end border-top pt-2'>
-                    <button className='btn btn-outline-primary me-2 btn-sm'>
+                    <button className='btn btn-outline-primary me-2 btn-sm'
+                        onClick={() => props.pegarAtividade(props.a.id)}>
                         <i className="fas fa-pen me-2"></i>
                         Editar
                     </button>
