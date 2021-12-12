@@ -1,0 +1,1 @@
+# Fullstack React DotNetCore 5 EfCore 5
