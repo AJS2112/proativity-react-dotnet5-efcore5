@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import './App.css';
 
+import { Atividade } from './components/Atividade';
+import { AtividadeForm } from './components/AtividadeForm';
+
 let initialState = [
   { id: 1, prioridade: '1', titulo: 'Titulo', descricao: "Primeira atividade" },
   { id: 2, prioridade: '1', titulo: 'Titulo', descricao: "Segunda atividade" }
@@ -55,42 +58,10 @@ function App() {
   return (
     <>
       <h1>React .NETCore EfCore</h1>
-      <form className="row g-3">
-
-        <div className="col-md-6">
-          <label className="form-label">Id</label>
-          <input id="id" className="form-control" type="text" readOnly
-            value={Math.max.apply(Math, atividades.map(item => item.id)) + 1} />
-        </div>
-
-        <div className='col-md-6'>
-          <label className='form-label'>Prioridade</label>
-          <select id="prioridade" className='form-select'>
-            <option defaultValue="0">Selecionar...</option>
-            <option value="1">Baixa</option>
-            <option value="2">Normal</option>
-            <option value="3">Alta</option>
-
-
-          </select>
-        </div>
-
-        <div className='col-md-6'>
-          <label className='form-label'>Titulo</label>
-          <input id="titulo" className='form-control' type="text" />
-        </div>
-
-        <div className='col-md-6'>
-          <label className='form-label'>Descricao</label>
-          <input id="descricao" className='form-control' type="text" />
-        </div>
-
-        <hr />
-        <button className='btn btn-outline-secondary' onClick={addAtividade}>+ Atividade</button>
-        {/* <div className='col-12'>
-        </div> */}
-      </form>
-
+      <AtividadeForm
+        atividades={atividades}
+        addAtividade={addAtividade}
+      />
       <div className="mt-3">
         {atividades.map(a => (
 
