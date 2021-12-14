@@ -8,7 +8,7 @@ export const AtividadeLista = props => {
                 <Atividade
                     key={a.id}
                     a={a}
-                    deletarAtividade={props.deletarAtividade}
+                    handleConfirmModal={props.handleConfirmModal}
                     pegarAtividade={props.pegarAtividade}
                 />
 

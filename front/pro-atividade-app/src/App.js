@@ -9,11 +9,24 @@ import api from './api/atividade';
 
 function App() {
   const [showAtividadeModal, setShowAtividadeModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+
   const [atividades, setAtividades] = useState([]);
   const [atividade, setAtividade] = useState({ id: 0 });
 
 
   const handleAtividadeModal = () => setShowAtividadeModal(!showAtividadeModal);
+
+  const handleConfirmModal = (id) => {
+    if (id !== 0 && id !== undefined) {
+      const atividade = atividades.filter(a => a.id === id);
+      setAtividade(atividade[0]);
+    } else {
+      setAtividade({ id: 0 });
+    }
+    setShowConfirmModal(!showConfirmModal)
+  };
+
 
   const novaAtividade = () => {
     setAtividade({ id: 0 });
@@ -56,6 +69,7 @@ function App() {
   }
 
   const deletarAtividade = async (id) => {
+    handleConfirmModal(0);
     if (await api.delete(`atividade/${id}`)) {
       const atividadesFiltradas = atividades.filter(a => a.id !== id);
       setAtividades([...atividadesFiltradas]);
@@ -81,8 +95,8 @@ function App() {
       </div>
       <AtividadeLista
         atividades={atividades}
-        deletarAtividade={deletarAtividade}
         pegarAtividade={pegarAtividade}
+        handleConfirmModal={handleConfirmModal}
       />
 
       <Modal show={showAtividadeModal} onHide={handleAtividadeModal}>
@@ -100,11 +114,27 @@ function App() {
             cancelarAtividade={cancelarAtividade}
           />
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>Lauch</Button>
-          <Button variant="primary" onClick={handleClose}>Lauch</Button>
+      </Modal>
 
-        </Modal.Footer> */}
+      <Modal size="sm" show={showConfirmModal} onHide={handleConfirmModal}>
+        <Modal.Header closeButtons>
+          <Modal.Title>
+            Excluindo Atividade: {atividade.id !== 0 ? atividade.id : ''}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Tem certeza que deseja excluir a atividade? {atividade.id}
+        </Modal.Body>
+        <Modal.Footer className='d-flex justify-content-between'>
+          <Button variant='outline-success' className='me-2' onClick={() => deletarAtividade(atividade.id)}>
+            <i className='fas fa-check me-2'></i>
+            Sim
+          </Button>
+          <Button variant='outline-danger' onClick={() => handleConfirmModal(0)}>
+            <i className='fas fa-times me-2'></i>
+            Não
+          </Button>
+        </Modal.Footer>
       </Modal>
 
     </>

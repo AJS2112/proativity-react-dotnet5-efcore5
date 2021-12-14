@@ -48,7 +48,7 @@ export const Atividade = props => {
                         Editar
                     </button>
                     <button className='btn btn-outline-danger me-2 btn-sm'
-                        onClick={() => props.deletarAtividade(props.a.id)}>
+                        onClick={() => props.handleConfirmModal(props.a.id)}>
                         <i className="fas fa-trash me-2"></i>
                         Deletar
                     </button>
