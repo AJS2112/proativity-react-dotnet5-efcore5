@@ -57,7 +57,7 @@ namespace ProAtividade.API.Controllers
         {
             var atividade = _context.Atividades.FirstOrDefault(a => a.Id == id);
             if (atividade == null)
-                throw new Exception("Atividade nao existe")
+                throw new Exception("Atividade nao existe");
 
 
             _context.Remove(atividade);
