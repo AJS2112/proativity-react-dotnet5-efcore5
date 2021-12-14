@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using ProAtividade.API.Data;
+using ProAtividade.Data.Context;
 
 namespace ProAtividade.API
 {
@@ -29,9 +29,6 @@ namespace ProAtividade.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /*services.AddDbContext<DataContext>(
-                ParallelOptions => options.UseSqlite(Configuration.GetConnectionString("Default"));
-            );*/
             services.AddDbContext<DataContext>(
                 options => options.UseSqlite(Configuration.GetConnectionString("Default"))
             );
