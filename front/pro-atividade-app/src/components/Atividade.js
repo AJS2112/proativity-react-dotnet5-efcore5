@@ -3,12 +3,10 @@ import React from "react";
 export const Atividade = props => {
     const prioridadeLabel = (param) => {
         switch (param) {
-            case '1':
-                return 'Baixa';
-            case '2':
-                return 'Normal';
-            case '3':
-                return 'Alta';
+            case 'Baixa':
+            case 'Normal':
+            case 'Alta':
+                return param;
             default:
                 return 'Não definido';
         }
@@ -16,11 +14,11 @@ export const Atividade = props => {
 
     const prioridadeStyle = (param, icone) => {
         switch (param) {
-            case '1':
+            case 'Baixa':
                 return icone ? 'smile' : 'success';
-            case '2':
+            case 'Normal':
                 return icone ? 'meh' : 'dark';
-            case '3':
+            case 'Alta':
                 return icone ? 'frown' : 'warning';
             default:
                 return 'Não definido';
