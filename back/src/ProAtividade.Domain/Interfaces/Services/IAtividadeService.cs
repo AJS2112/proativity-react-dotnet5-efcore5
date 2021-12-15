@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using ProAtividade.Domain.Entities;
 
-namespace ProAtividades.Domain.Interfaces.Repositories
+namespace ProAtividades.Domain.Interfaces.Services
 {
     public interface IAtividadeService
     {
