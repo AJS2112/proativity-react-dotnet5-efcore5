@@ -1,11 +1,11 @@
 import React from "react";
-import { Atividade } from './Atividade';
+import { AtividadeItem } from './AtividadeItem';
 
 export const AtividadeLista = props => {
     return (
         <div className="mt-3">
             {props.atividades.map(a => (
-                <Atividade
+                <AtividadeItem
                     key={a.id}
                     a={a}
                     handleConfirmModal={props.handleConfirmModal}
