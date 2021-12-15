@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import './App.css';
 
+import { Menu } from './components/Menu'
 import { AtividadeForm } from './pages/atividades/AtividadeForm';
 import { AtividadeLista } from './pages/atividades/AtividadeLista';
 
 import api from './api/atividade';
+import { TitlePage } from './components/TitlePage';
 
 function App() {
   const [showAtividadeModal, setShowAtividadeModal] = useState(false);
@@ -85,14 +87,14 @@ function App() {
 
   return (
     <>
-      <h1>React .NETCore EfCore</h1>
-      <div className='d-flex justify-content-between align-items-end mt-2 pb-3 border-bottom border-1'>
-        <h1 className='m-0 p-0'>Atividade: {atividade.id !== 0 ? atividade.id : ''}</h1>
+      <Menu></Menu>
+      <TitlePage title={"Atividade: " + (atividade.id !== 0 ? atividade.id : '')}>
         <Button variant="outline-secondary" onClick={novaAtividade}>
           <i className='fas fa-plus'></i>
         </Button>
 
-      </div>
+      </TitlePage>
+
       <AtividadeLista
         atividades={atividades}
         pegarAtividade={pegarAtividade}
