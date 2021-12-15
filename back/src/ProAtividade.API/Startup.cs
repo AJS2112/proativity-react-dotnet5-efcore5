@@ -14,6 +14,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ProAtividade.Data.Context;
+using ProAtividade.Data.Repositories;
+using ProAtividade.Domain.Services;
+using ProAtividades.Domain.Interfaces.Repositories;
+using ProAtividades.Domain.Interfaces.Services;
 
 namespace ProAtividade.API
 {
@@ -32,6 +36,12 @@ namespace ProAtividade.API
             services.AddDbContext<DataContext>(
                 options => options.UseSqlite(Configuration.GetConnectionString("Default"))
             );
+
+            services.AddScoped<IAtividadeRepo, AtividadeRepo>();
+            services.AddScoped<IGeneralRepo, GeneralRepo>();
+            services.AddScoped<IAtividadeService, AtividadeService>();
+
+
             services.AddControllers()
             .AddJsonOptions(options =>
                 {
