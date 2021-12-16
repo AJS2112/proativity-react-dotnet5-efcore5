@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
-import { Menu } from './../../components/Menu'
 import { AtividadeForm } from './AtividadeForm';
 import { AtividadeLista } from './AtividadeLista';
 import api from './../../api/atividade';
@@ -84,7 +83,6 @@ export default function Atividade() {
 
     return (
         <>
-            <Menu></Menu>
             <TitlePage title={"Atividade: " + (atividade.id !== 0 ? atividade.id : '')}>
                 <Button variant="outline-secondary" onClick={novaAtividade}>
                     <i className='fas fa-plus'></i>
