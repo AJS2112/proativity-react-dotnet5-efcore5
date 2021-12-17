@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FormControl, InputGroup } from "react-bootstrap";
+import { Button, FormControl, InputGroup } from "react-bootstrap";
+import { useHistory } from 'react-router-dom';
 import { TitlePage } from "../../components/TitlePage";
 const clientes = [
     { id: 1, nome: "Microsoft", resposavel: "Otto", contato: '106654', situacao: 'Ativo' },
@@ -10,7 +11,9 @@ const clientes = [
 
 ]
 export const ClienteList = (props) => {
+    const history = useHistory();
     const [termoBusca, setTermoBusca] = useState('');
+
 
     const clientesFiltrados = clientes.filter((cliente) => {
         //cliente.nome.toLocaleLowerCase().indexOf(termoBusca) !== -1
@@ -24,9 +27,17 @@ export const ClienteList = (props) => {
         setTermoBusca(e.target.value)
 
     }
+    const novoCliente = () => {
+        history.push('/cliente/detalhe')
+    }
     return (
         <>
-            <TitlePage title="Clientes" />
+            <TitlePage title="Clientes">
+                <Button variant="outline-secondary" onClick={novoCliente}>
+                    <i className="fas fa-plus me-2"></i>
+                    Novo Cliente
+                </Button>
+            </TitlePage>
             <InputGroup className="mb-3 mt-3">
                 <InputGroup.Text>Buscar</InputGroup.Text>
                 <FormControl
@@ -56,7 +67,8 @@ export const ClienteList = (props) => {
                             <td>{cliente.situacao}</td>
                             <td>
                                 <div>
-                                    <button className="btn-sm btn-outline-primary me2">
+                                    <button className="btn-sm btn-outline-primary me2"
+                                        onClick={() => history.push(`/cliente/detalhe/${cliente.id}`)}>
                                         <i className="fas fa-user-edit me-2"></i>
                                         Editar
                                     </button>
