@@ -45,7 +45,7 @@ export default function Atividade() {
         }
         getAtividades();
         console.log(atividades)
-    }, [])
+    })
 
 
     const pegarAtividade = (id) => {
